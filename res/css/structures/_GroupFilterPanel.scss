@@ -27,6 +27,7 @@ $groupFilterPanelWidth: 56px; // only applies in this file, used for calculation
     flex-direction: column;
 
     // GroupFilterPanel handles its own CSS
+    display: none;
 }
 
 .mx_GroupFilterPanel {
