@@ -28,34 +28,34 @@ import defaultDispatcher from "../../../dispatcher/dispatcher";
 import { Action } from "../../../dispatcher/actions";
 import { RightPanelPhases } from "../../../stores/RightPanelStorePhases";
 import { SetRightPanelPhasePayload } from "../../../dispatcher/payloads/SetRightPanelPhasePayload";
-import Modal from "../../../Modal";
-import ShareDialog from '../dialogs/ShareDialog';
+// import Modal from "../../../Modal";
+// import ShareDialog from '../dialogs/ShareDialog';
 import { useEventEmitter } from "../../../hooks/useEventEmitter";
-import WidgetUtils from "../../../utils/WidgetUtils";
-import { IntegrationManagers } from "../../../integrations/IntegrationManagers";
-import SettingsStore from "../../../settings/SettingsStore";
+// import WidgetUtils from "../../../utils/WidgetUtils";
+// import { IntegrationManagers } from "../../../integrations/IntegrationManagers";
+// import SettingsStore from "../../../settings/SettingsStore";
 import TextWithTooltip from "../elements/TextWithTooltip";
-import WidgetAvatar from "../avatars/WidgetAvatar";
-import AccessibleTooltipButton from "../elements/AccessibleTooltipButton";
+// import WidgetAvatar from "../avatars/WidgetAvatar";
+// import AccessibleTooltipButton from "../elements/AccessibleTooltipButton";
 import WidgetStore, { IApp } from "../../../stores/WidgetStore";
 import { E2EStatus } from "../../../utils/ShieldUtils";
 import RoomContext from "../../../contexts/RoomContext";
-import { UIFeature } from "../../../settings/UIFeature";
-import { ChevronFace, ContextMenuTooltipButton, useContextMenu } from "../../structures/ContextMenu";
-import WidgetContextMenu from "../context_menus/WidgetContextMenu";
+// import { UIFeature } from "../../../settings/UIFeature";
+// import { ChevronFace, ContextMenuTooltipButton, useContextMenu } from "../../structures/ContextMenu";
+// import WidgetContextMenu from "../context_menus/WidgetContextMenu";
 import { useRoomMemberCount } from "../../../hooks/useRoomMembers";
 import { Container, MAX_PINNED, WidgetLayoutStore } from "../../../stores/widgets/WidgetLayoutStore";
 import RoomName from "../elements/RoomName";
-import UIStore from "../../../stores/UIStore";
+// import UIStore from "../../../stores/UIStore";
 
 interface IProps {
     room: Room;
     onClose(): void;
 }
 
-interface IAppsSectionProps {
-    room: Room;
-}
+// interface IAppsSectionProps {
+//     room: Room;
+// }
 
 interface IButtonProps {
     className: string;
@@ -86,125 +86,125 @@ export const useWidgets = (room: Room) => {
     return apps;
 };
 
-interface IAppRowProps {
-    app: IApp;
-    room: Room;
-}
+// interface IAppRowProps {
+//     app: IApp;
+//     room: Room;
+// }
 
-const AppRow: React.FC<IAppRowProps> = ({ app, room }) => {
-    const name = WidgetUtils.getWidgetName(app);
-    const dataTitle = WidgetUtils.getWidgetDataTitle(app);
-    const subtitle = dataTitle && " - " + dataTitle;
+// const AppRow: React.FC<IAppRowProps> = ({ app, room }) => {
+//     const name = WidgetUtils.getWidgetName(app);
+//     const dataTitle = WidgetUtils.getWidgetDataTitle(app);
+//     const subtitle = dataTitle && " - " + dataTitle;
 
-    const onOpenWidgetClick = () => {
-        defaultDispatcher.dispatch<SetRightPanelPhasePayload>({
-            action: Action.SetRightPanelPhase,
-            phase: RightPanelPhases.Widget,
-            refireParams: {
-                widgetId: app.id,
-            },
-        });
-    };
+//     const onOpenWidgetClick = () => {
+//         defaultDispatcher.dispatch<SetRightPanelPhasePayload>({
+//             action: Action.SetRightPanelPhase,
+//             phase: RightPanelPhases.Widget,
+//             refireParams: {
+//                 widgetId: app.id,
+//             },
+//         });
+//     };
 
-    const isPinned = WidgetLayoutStore.instance.isInContainer(room, app, Container.Top);
-    const togglePin = isPinned
-        ? () => { WidgetLayoutStore.instance.moveToContainer(room, app, Container.Right); }
-        : () => { WidgetLayoutStore.instance.moveToContainer(room, app, Container.Top); };
+//     const isPinned = WidgetLayoutStore.instance.isInContainer(room, app, Container.Top);
+//     const togglePin = isPinned
+//         ? () => { WidgetLayoutStore.instance.moveToContainer(room, app, Container.Right); }
+//         : () => { WidgetLayoutStore.instance.moveToContainer(room, app, Container.Top); };
 
-    const [menuDisplayed, handle, openMenu, closeMenu] = useContextMenu<HTMLDivElement>();
-    let contextMenu;
-    if (menuDisplayed) {
-        const rect = handle.current.getBoundingClientRect();
-        contextMenu = <WidgetContextMenu
-            chevronFace={ChevronFace.None}
-            right={UIStore.instance.windowWidth - rect.right}
-            bottom={UIStore.instance.windowHeight - rect.top}
-            onFinished={closeMenu}
-            app={app}
-        />;
-    }
+//     const [menuDisplayed, handle, openMenu, closeMenu] = useContextMenu<HTMLDivElement>();
+//     let contextMenu;
+//     if (menuDisplayed) {
+//         const rect = handle.current.getBoundingClientRect();
+//         contextMenu = <WidgetContextMenu
+//             chevronFace={ChevronFace.None}
+//             right={UIStore.instance.windowWidth - rect.right}
+//             bottom={UIStore.instance.windowHeight - rect.top}
+//             onFinished={closeMenu}
+//             app={app}
+//         />;
+//     }
 
-    const cannotPin = !isPinned && !WidgetLayoutStore.instance.canAddToContainer(room, Container.Top);
+//     const cannotPin = !isPinned && !WidgetLayoutStore.instance.canAddToContainer(room, Container.Top);
 
-    let pinTitle: string;
-    if (cannotPin) {
-        pinTitle = _t("You can only pin up to %(count)s widgets", { count: MAX_PINNED });
-    } else {
-        pinTitle = isPinned ? _t("Unpin") : _t("Pin");
-    }
+//     let pinTitle: string;
+//     if (cannotPin) {
+//         pinTitle = _t("You can only pin up to %(count)s widgets", { count: MAX_PINNED });
+//     } else {
+//         pinTitle = isPinned ? _t("Unpin") : _t("Pin");
+//     }
 
-    const classes = classNames("mx_BaseCard_Button mx_RoomSummaryCard_Button", {
-        mx_RoomSummaryCard_Button_pinned: isPinned,
-    });
+//     const classes = classNames("mx_BaseCard_Button mx_RoomSummaryCard_Button", {
+//         mx_RoomSummaryCard_Button_pinned: isPinned,
+//     });
 
-    return <div className={classes} ref={handle}>
-        <AccessibleTooltipButton
-            className="mx_RoomSummaryCard_icon_app"
-            onClick={onOpenWidgetClick}
-            // only show a tooltip if the widget is pinned
-            title={isPinned ? _t("Unpin a widget to view it in this panel") : ""}
-            forceHide={!isPinned}
-            disabled={isPinned}
-            yOffset={-48}
-        >
-            <WidgetAvatar app={app} />
-            <span>{ name }</span>
-            { subtitle }
-        </AccessibleTooltipButton>
+//     return <div className={classes} ref={handle}>
+//         <AccessibleTooltipButton
+//             className="mx_RoomSummaryCard_icon_app"
+//             onClick={onOpenWidgetClick}
+//             // only show a tooltip if the widget is pinned
+//             title={isPinned ? _t("Unpin a widget to view it in this panel") : ""}
+//             forceHide={!isPinned}
+//             disabled={isPinned}
+//             yOffset={-48}
+//         >
+//             <WidgetAvatar app={app} />
+//             <span>{ name }</span>
+//             { subtitle }
+//         </AccessibleTooltipButton>
 
-        <ContextMenuTooltipButton
-            className="mx_RoomSummaryCard_app_options"
-            isExpanded={menuDisplayed}
-            onClick={openMenu}
-            title={_t("Options")}
-            yOffset={-24}
-        />
+//         <ContextMenuTooltipButton
+//             className="mx_RoomSummaryCard_app_options"
+//             isExpanded={menuDisplayed}
+//             onClick={openMenu}
+//             title={_t("Options")}
+//             yOffset={-24}
+//         />
 
-        <AccessibleTooltipButton
-            className="mx_RoomSummaryCard_app_pinToggle"
-            onClick={togglePin}
-            title={pinTitle}
-            disabled={cannotPin}
-            yOffset={-24}
-        />
+//         <AccessibleTooltipButton
+//             className="mx_RoomSummaryCard_app_pinToggle"
+//             onClick={togglePin}
+//             title={pinTitle}
+//             disabled={cannotPin}
+//             yOffset={-24}
+//         />
 
-        { contextMenu }
-    </div>;
-};
+//         { contextMenu }
+//     </div>;
+// };
 
-const AppsSection: React.FC<IAppsSectionProps> = ({ room }) => {
-    const apps = useWidgets(room);
+// const AppsSection: React.FC<IAppsSectionProps> = ({ room }) => {
+//     const apps = useWidgets(room);
 
-    const onManageIntegrations = () => {
-        const managers = IntegrationManagers.sharedInstance();
-        if (!managers.hasManager()) {
-            managers.openNoManagerDialog();
-        } else {
-            if (SettingsStore.getValue("feature_many_integration_managers")) {
-                managers.openAll(room);
-            } else {
-                managers.getPrimaryManager().open(room);
-            }
-        }
-    };
+//     const onManageIntegrations = () => {
+//         const managers = IntegrationManagers.sharedInstance();
+//         if (!managers.hasManager()) {
+//             managers.openNoManagerDialog();
+//         } else {
+//             if (SettingsStore.getValue("feature_many_integration_managers")) {
+//                 managers.openAll(room);
+//             } else {
+//                 managers.getPrimaryManager().open(room);
+//             }
+//         }
+//     };
 
-    let copyLayoutBtn = null;
-    if (apps.length > 0 && WidgetLayoutStore.instance.canCopyLayoutToRoom(room)) {
-        copyLayoutBtn = (
-            <AccessibleButton kind="link" onClick={() => WidgetLayoutStore.instance.copyLayoutToRoom(room)}>
-                { _t("Set my room layout for everyone") }
-            </AccessibleButton>
-        );
-    }
+//     let copyLayoutBtn = null;
+//     if (apps.length > 0 && WidgetLayoutStore.instance.canCopyLayoutToRoom(room)) {
+//         copyLayoutBtn = (
+//             <AccessibleButton kind="link" onClick={() => WidgetLayoutStore.instance.copyLayoutToRoom(room)}>
+//                 { _t("Set my room layout for everyone") }
+//             </AccessibleButton>
+//         );
+//     }
 
-    return <Group className="mx_RoomSummaryCard_appsGroup" title={_t("Widgets")}>
-        { apps.map(app => <AppRow key={app.id} app={app} room={room} />) }
-        { copyLayoutBtn }
-        <AccessibleButton kind="link" onClick={onManageIntegrations}>
-            { apps.length > 0 ? _t("Edit widgets, bridges & bots") : _t("Add widgets, bridges & bots") }
-        </AccessibleButton>
-    </Group>;
-};
+//     return <Group className="mx_RoomSummaryCard_appsGroup" title={_t("Widgets")}>
+//         { apps.map(app => <AppRow key={app.id} app={app} room={room} />) }
+//         { copyLayoutBtn }
+//         <AccessibleButton kind="link" onClick={onManageIntegrations}>
+//             { apps.length > 0 ? _t("Edit widgets, bridges & bots") : _t("Add widgets, bridges & bots") }
+//         </AccessibleButton>
+//     </Group>;
+// };
 
 const onRoomMembersClick = () => {
     defaultDispatcher.dispatch<SetRightPanelPhasePayload>({
@@ -227,11 +227,11 @@ const onRoomSettingsClick = () => {
 const RoomSummaryCard: React.FC<IProps> = ({ room, onClose }) => {
     const cli = useContext(MatrixClientContext);
 
-    const onShareRoomClick = () => {
-        Modal.createTrackedDialog('share room dialog', '', ShareDialog, {
-            target: room,
-        });
-    };
+    // const onShareRoomClick = () => {
+    //     Modal.createTrackedDialog('share room dialog', '', ShareDialog, {
+    //         target: room,
+    //     });
+    // };
 
     const isRoomEncrypted = useIsEncrypted(cli, room);
     const roomContext = useContext(RoomContext);
@@ -273,15 +273,15 @@ const RoomSummaryCard: React.FC<IProps> = ({ room, onClose }) => {
             <Button className="mx_RoomSummaryCard_icon_files" onClick={onRoomFilesClick}>
                 { _t("Show files") }
             </Button>
-            <Button className="mx_RoomSummaryCard_icon_share" onClick={onShareRoomClick}>
+            { /* <Button className="mx_RoomSummaryCard_icon_share" onClick={onShareRoomClick}>
                 { _t("Share room") }
-            </Button>
+            </Button> */ }
             <Button className="mx_RoomSummaryCard_icon_settings" onClick={onRoomSettingsClick}>
                 { _t("Room settings") }
             </Button>
         </Group>
 
-        { SettingsStore.getValue(UIFeature.Widgets) && <AppsSection room={room} /> }
+        { /* { SettingsStore.getValue(UIFeature.Widgets) && <AppsSection room={room} /> } */ }
     </BaseCard>;
 };
 
