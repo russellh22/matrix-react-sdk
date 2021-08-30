@@ -126,37 +126,37 @@ export default class UserSettingsDialog extends React.Component<IProps, IState> 
             ));
         }
 
-        tabs.push(new Tab(
-            UserTab.Security,
-            _td("Security & Privacy"),
-            "mx_UserSettingsDialog_securityIcon",
-            <SecurityUserSettingsTab closeSettingsFn={this.props.onFinished} />,
-        ));
+        // tabs.push(new Tab(
+        //     UserTab.Security,
+        //     _td("Security & Privacy"),
+        //     "mx_UserSettingsDialog_securityIcon",
+        //     <SecurityUserSettingsTab closeSettingsFn={this.props.onFinished} />,
+        // ));
         // Show the Labs tab if enabled or if there are any active betas
-        if (SdkConfig.get()['showLabsSettings']
-            || SettingsStore.getFeatureSettingNames().some(k => SettingsStore.getBetaInfo(k))
-        ) {
-            tabs.push(new Tab(
-                UserTab.Labs,
-                _td("Labs"),
-                "mx_UserSettingsDialog_labsIcon",
-                <LabsUserSettingsTab />,
-            ));
-        }
-        if (this.state.mjolnirEnabled) {
-            tabs.push(new Tab(
-                UserTab.Mjolnir,
-                _td("Ignored users"),
-                "mx_UserSettingsDialog_mjolnirIcon",
-                <MjolnirUserSettingsTab />,
-            ));
-        }
-        tabs.push(new Tab(
-            UserTab.Help,
-            _td("Help & About"),
-            "mx_UserSettingsDialog_helpIcon",
-            <HelpUserSettingsTab closeSettingsFn={() => this.props.onFinished(true)} />,
-        ));
+        // if (SdkConfig.get()['showLabsSettings']
+        //     || SettingsStore.getFeatureSettingNames().some(k => SettingsStore.getBetaInfo(k))
+        // ) {
+        //     tabs.push(new Tab(
+        //         UserTab.Labs,
+        //         _td("Labs"),
+        //         "mx_UserSettingsDialog_labsIcon",
+        //         <LabsUserSettingsTab />,
+        //     ));
+        // }
+        // if (this.state.mjolnirEnabled) {
+        //     tabs.push(new Tab(
+        //         UserTab.Mjolnir,
+        //         _td("Ignored users"),
+        //         "mx_UserSettingsDialog_mjolnirIcon",
+        //         <MjolnirUserSettingsTab />,
+        //     ));
+        // }
+        // tabs.push(new Tab(
+        //     UserTab.Help,
+        //     _td("Help & About"),
+        //     "mx_UserSettingsDialog_helpIcon",
+        //     <HelpUserSettingsTab closeSettingsFn={() => this.props.onFinished(true)} />,
+        // ));
 
         return tabs;
     }

@@ -187,10 +187,10 @@ export default class ProfileSettings extends React.Component {
                             autoComplete="off"
                             onChange={this._onDisplayNameChanged}
                         />
-                        <p>
+                        { /* <p>
                             { this.state.userId }
                             { hostingSignup }
-                        </p>
+                        </p> */ }
                     </div>
                     <AvatarSetting
                         avatarUrl={this.state.avatarUrl}

@@ -455,12 +455,12 @@ export default class GeneralUserSettingsTab extends React.Component {
             <div className="mx_SettingsTab">
                 <div className="mx_SettingsTab_heading">{ _t("General") }</div>
                 { this._renderProfileSection() }
-                { this._renderAccountSection() }
+                { /* { this._renderAccountSection() } */ }
                 { this._renderLanguageSection() }
                 { supportsMultiLanguageSpellCheck ? this._renderSpellCheckSection() : null }
                 { discoverySection }
                 { this._renderIntegrationManagerSection() /* Has its own title */ }
-                { accountManagementSection }
+                { /* { accountManagementSection } */ }
             </div>
         );
     }
