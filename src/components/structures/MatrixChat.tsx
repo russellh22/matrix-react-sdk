@@ -2058,8 +2058,6 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                     </div>
                 );
             }
-        } else if (this.state.view === Views.WELCOME) {
-            view = <Welcome />;
         } else if (this.state.view === Views.REGISTER && SettingsStore.getValue(UIFeature.Registration)) {
             const email = ThreepidInviteStore.instance.pickBestInvite()?.toEmail;
             view = (
@@ -2087,7 +2085,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                     {...this.getServerProperties()}
                 />
             );
-        } else if (this.state.view === Views.LOGIN) {
+        } else if (this.state.view === Views.LOGIN || this.state.view === Views.WELCOME) {
             view = (
                 <AutoLogin
                     defaultDeviceDisplayName={this.props.defaultDeviceDisplayName}
