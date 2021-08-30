@@ -500,8 +500,8 @@ export default class RoomTile extends React.PureComponent<IProps, IState> {
             const isLowPriority = roomTags.includes(DefaultTagID.LowPriority);
             const lowPriorityLabel = _t("Low Priority");
 
-            const userId = MatrixClientPeg.get().getUserId();
-            const canInvite = this.props.room.canInvite(userId);
+            // const userId = MatrixClientPeg.get().getUserId();
+            // const canInvite = this.props.room.canInvite(userId);
             contextMenu = <IconizedContextMenu
                 {...contextMenuBelow(this.state.generalMenuPosition)}
                 onFinished={this.onCloseGeneralMenu}
@@ -521,7 +521,7 @@ export default class RoomTile extends React.PureComponent<IProps, IState> {
                         label={lowPriorityLabel}
                         iconClassName="mx_RoomTile_iconArrowDown"
                     />
-                    { canInvite ? (
+                    { /* { canInvite ? (
                         <IconizedContextMenuOption
                             onClick={this.onInviteClick}
                             label={_t("Invite People")}
@@ -537,15 +537,15 @@ export default class RoomTile extends React.PureComponent<IProps, IState> {
                         onClick={this.onOpenRoomSettings}
                         label={_t("Settings")}
                         iconClassName="mx_RoomTile_iconSettings"
-                    />
+                    /> */ }
                 </IconizedContextMenuOptionList>
-                <IconizedContextMenuOptionList red>
+                { /* <IconizedContextMenuOptionList red>
                     <IconizedContextMenuOption
                         onClick={this.onLeaveRoomClick}
                         label={_t("Leave Room")}
                         iconClassName="mx_RoomTile_iconSignOut"
                     />
-                </IconizedContextMenuOptionList>
+                </IconizedContextMenuOptionList> */ }
             </IconizedContextMenu>;
         }
 
