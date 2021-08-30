@@ -249,15 +249,15 @@ export default class MessageContextMenu extends React.Component<IProps, IState> 
     }
 
     render() {
-        const cli = MatrixClientPeg.get();
-        const me = cli.getUserId();
+        // const cli = MatrixClientPeg.get();
+        // const me = cli.getUserId();
         const mxEvent = this.props.mxEvent;
         const eventStatus = mxEvent.status;
         const unsentReactionsCount = this.getUnsentReactions().length;
 
         let resendReactionsButton: JSX.Element;
         let redactButton: JSX.Element;
-        let forwardButton: JSX.Element;
+        // let forwardButton: JSX.Element;
         let pinButton: JSX.Element;
         let unhidePreviewButton: JSX.Element;
         let externalURLButton: JSX.Element;
@@ -290,13 +290,13 @@ export default class MessageContextMenu extends React.Component<IProps, IState> 
         }
 
         if (isContentActionable(mxEvent)) {
-            forwardButton = (
-                <IconizedContextMenuOption
-                    iconClassName="mx_MessageContextMenu_iconForward"
-                    label={_t("Forward")}
-                    onClick={this.onForwardClick}
-                />
-            );
+            // forwardButton = (
+            //     <IconizedContextMenuOption
+            //         iconClassName="mx_MessageContextMenu_iconForward"
+            //         label={_t("Forward")}
+            //         onClick={this.onForwardClick}
+            //     />
+            // );
 
             if (this.state.canPin) {
                 pinButton = (
@@ -309,13 +309,13 @@ export default class MessageContextMenu extends React.Component<IProps, IState> 
             }
         }
 
-        const viewSourceButton = (
-            <IconizedContextMenuOption
-                iconClassName="mx_MessageContextMenu_iconSource"
-                label={_t("View source")}
-                onClick={this.onViewSourceClick}
-            />
-        );
+        // const viewSourceButton = (
+        //     <IconizedContextMenuOption
+        //         iconClassName="mx_MessageContextMenu_iconSource"
+        //         label={_t("View source")}
+        //         onClick={this.onViewSourceClick}
+        //     />
+        // );
 
         if (this.props.eventTileOps) {
             if (this.props.eventTileOps.isWidgetHidden()) {
@@ -329,26 +329,26 @@ export default class MessageContextMenu extends React.Component<IProps, IState> 
             }
         }
 
-        let permalink;
-        if (this.props.permalinkCreator) {
-            permalink = this.props.permalinkCreator.forEvent(this.props.mxEvent.getId());
-        }
-        const permalinkButton = (
-            <IconizedContextMenuOption
-                iconClassName="mx_MessageContextMenu_iconPermalink"
-                onClick={this.onPermalinkClick}
-                label={_t('Share')}
-                element="a"
-                {
-                    // XXX: Typescript signature for AccessibleButton doesn't work properly for non-inputs like `a`
-                    ...{
-                        href: permalink,
-                        target: "_blank",
-                        rel: "noreferrer noopener",
-                    }
-                }
-            />
-        );
+        // let permalink;
+        // if (this.props.permalinkCreator) {
+        //     permalink = this.props.permalinkCreator.forEvent(this.props.mxEvent.getId());
+        // }
+        // const permalinkButton = (
+        //     <IconizedContextMenuOption
+        //         iconClassName="mx_MessageContextMenu_iconPermalink"
+        //         onClick={this.onPermalinkClick}
+        //         label={_t('Share')}
+        //         element="a"
+        //         {
+        //             // XXX: Typescript signature for AccessibleButton doesn't work properly for non-inputs like `a`
+        //             ...{
+        //                 href: permalink,
+        //                 target: "_blank",
+        //                 rel: "noreferrer noopener",
+        //             }
+        //         }
+        //     />
+        // );
 
         if (this.props.eventTileOps) { // this event is rendered using TextualBody
             quoteButton = (
@@ -392,27 +392,27 @@ export default class MessageContextMenu extends React.Component<IProps, IState> 
             );
         }
 
-        let reportEventButton: JSX.Element;
-        if (mxEvent.getSender() !== me) {
-            reportEventButton = (
-                <IconizedContextMenuOption
-                    iconClassName="mx_MessageContextMenu_iconReport"
-                    label={_t("Report")}
-                    onClick={this.onReportEventClick}
-                />
-            );
-        }
+        // let reportEventButton: JSX.Element;
+        // if (mxEvent.getSender() !== me) {
+        //     reportEventButton = (
+        //         <IconizedContextMenuOption
+        //             iconClassName="mx_MessageContextMenu_iconReport"
+        //             label={_t("Report")}
+        //             onClick={this.onReportEventClick}
+        //         />
+        //     );
+        // }
 
         const commonItemsList = (
             <IconizedContextMenuOptionList>
                 { quoteButton }
-                { forwardButton }
+                { /* { forwardButton } */ }
                 { pinButton }
-                { permalinkButton }
-                { reportEventButton }
+                { /* { permalinkButton } */ }
+                { /* { reportEventButton } */ }
                 { externalURLButton }
                 { unhidePreviewButton }
-                { viewSourceButton }
+                { /* { viewSourceButton } */ }
                 { resendReactionsButton }
                 { collapseReplyThread }
             </IconizedContextMenuOptionList>
