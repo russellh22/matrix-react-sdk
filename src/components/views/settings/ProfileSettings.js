@@ -18,7 +18,7 @@ import React, { createRef } from 'react';
 import { _t } from "../../../languageHandler";
 import { MatrixClientPeg } from "../../../MatrixClientPeg";
 import Field from "../elements/Field";
-import { getHostingLink } from '../../../utils/HostingLink';
+// import { getHostingLink } from '../../../utils/HostingLink';
 import * as sdk from "../../../index";
 import { OwnProfileStore } from "../../../stores/OwnProfileStore";
 import Modal from "../../../Modal";
@@ -145,21 +145,21 @@ export default class ProfileSettings extends React.Component {
     };
 
     render() {
-        const hostingSignupLink = getHostingLink('user-settings');
-        let hostingSignup = null;
-        if (hostingSignupLink) {
-            hostingSignup = <span className="mx_ProfileSettings_hostingSignup">
-                { _t(
-                    "<a>Upgrade</a> to your own domain", {},
-                    {
-                        a: sub => <a href={hostingSignupLink} target="_blank" rel="noreferrer noopener">{ sub }</a>,
-                    },
-                ) }
-                <a href={hostingSignupLink} target="_blank" rel="noreferrer noopener">
-                    <img src={require("../../../../res/img/external-link.svg")} width="11" height="10" alt='' />
-                </a>
-            </span>;
-        }
+        // const hostingSignupLink = getHostingLink('user-settings');
+        // let hostingSignup = null;
+        // if (hostingSignupLink) {
+        //     hostingSignup = <span className="mx_ProfileSettings_hostingSignup">
+        //         { _t(
+        //             "<a>Upgrade</a> to your own domain", {},
+        //             {
+        //                 a: sub => <a href={hostingSignupLink} target="_blank" rel="noreferrer noopener">{ sub }</a>,
+        //             },
+        //         ) }
+        //         <a href={hostingSignupLink} target="_blank" rel="noreferrer noopener">
+        //             <img src={require("../../../../res/img/external-link.svg")} width="11" height="10" alt='' />
+        //         </a>
+        //     </span>;
+        // }
 
         const AccessibleButton = sdk.getComponent('elements.AccessibleButton');
         const AvatarSetting = sdk.getComponent('settings.AvatarSetting');

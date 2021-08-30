@@ -435,13 +435,13 @@ export default class GeneralUserSettingsTab extends React.Component {
             />
             : null;
 
-        let accountManagementSection;
-        if (SettingsStore.getValue(UIFeature.Deactivate)) {
-            accountManagementSection = <>
-                <div className="mx_SettingsTab_heading">{ _t("Deactivate account") }</div>
-                { this._renderManagementSection() }
-            </>;
-        }
+        // let accountManagementSection;
+        // if (SettingsStore.getValue(UIFeature.Deactivate)) {
+        //     accountManagementSection = <>
+        //         <div className="mx_SettingsTab_heading">{ _t("Deactivate account") }</div>
+        //         { this._renderManagementSection() }
+        //     </>;
+        // }
 
         let discoverySection;
         if (SettingsStore.getValue(UIFeature.IdentityServer)) {
