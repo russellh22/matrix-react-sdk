@@ -98,7 +98,7 @@ import Welcome from "../views/auth/Welcome";
 import ForgotPassword from "./auth/ForgotPassword";
 import E2eSetup from "./auth/E2eSetup";
 import Registration from './auth/Registration';
-import Login from "./auth/Login";
+import AutoLogin from './auth/AutoLogin';
 import ErrorBoundary from '../views/elements/ErrorBoundary';
 import VerificationRequestToast from '../views/toasts/VerificationRequestToast';
 
@@ -425,11 +425,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
 
         const crossSigningIsSetUp = cli.getStoredCrossSigningForUser(cli.getUserId());
         if (crossSigningIsSetUp) {
-            if (SecurityCustomisations.SHOW_ENCRYPTION_SETUP_UI === false) {
-                this.onLoggedIn();
-            } else {
-                this.setStateForNewView({ view: Views.COMPLETE_SECURITY });
-            }
+            this.onLoggedIn();
         } else if (await cli.doesServerSupportUnstableFeature("org.matrix.e2e_cross_signing")) {
             this.setStateForNewView({ view: Views.E2E_SETUP });
         } else {
@@ -1319,11 +1315,6 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
 
         // defer the following actions by 30 seconds to not throw them at the user immediately
         await sleep(30);
-        if (SettingsStore.getValue("showCookieBar") &&
-            (Analytics.canEnable() || CountlyAnalytics.instance.canEnable())
-        ) {
-            showAnalyticsToast(this.props.config.piwik?.policyUrl);
-        }
         if (SdkConfig.get().mobileGuideToast) {
             // The toast contains further logic to detect mobile platforms,
             // check if it has been dismissed before, etc.
@@ -2097,18 +2088,10 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 />
             );
         } else if (this.state.view === Views.LOGIN) {
-            const showPasswordReset = SettingsStore.getValue(UIFeature.PasswordReset);
             view = (
-                <Login
-                    isSyncing={this.state.pendingInitialSync}
-                    onLoggedIn={this.onUserCompletedLoginFlow}
-                    onRegisterClick={this.onRegisterClick}
-                    fallbackHsUrl={this.getFallbackHsUrl()}
+                <AutoLogin
                     defaultDeviceDisplayName={this.props.defaultDeviceDisplayName}
-                    onForgotPasswordClick={showPasswordReset ? this.onForgotPasswordClick : undefined}
-                    onServerConfigChange={this.onServerConfigChange}
-                    fragmentAfterLogin={fragmentAfterLogin}
-                    defaultUsername={this.props.startingFragmentQueryParams.defaultUsername as string}
+                    onLoggedIn={this.onUserCompletedLoginFlow}
                     {...this.getServerProperties()}
                 />
             );
