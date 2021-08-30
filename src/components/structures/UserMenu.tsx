@@ -405,7 +405,7 @@ export default class UserMenu extends React.Component<IProps, IState> {
             <React.Fragment>
                 <IconizedContextMenuOptionList>
                     { homeButton }
-                    <IconizedContextMenuOption
+                    { /* <IconizedContextMenuOption
                         iconClassName="mx_UserMenu_iconBell"
                         label={_t("Notification settings")}
                         onClick={(e) => this.onSettingsOpen(e, UserTab.Notifications)}
@@ -414,10 +414,10 @@ export default class UserMenu extends React.Component<IProps, IState> {
                         iconClassName="mx_UserMenu_iconLock"
                         label={_t("Security & privacy")}
                         onClick={(e) => this.onSettingsOpen(e, UserTab.Security)}
-                    />
+                    /> */ }
                     <IconizedContextMenuOption
                         iconClassName="mx_UserMenu_iconSettings"
-                        label={_t("All settings")}
+                        label={_t("Settings")}
                         onClick={(e) => this.onSettingsOpen(e, null)}
                     />
                     { /* <IconizedContextMenuOption
@@ -425,15 +425,15 @@ export default class UserMenu extends React.Component<IProps, IState> {
                         label={_t("Archived rooms")}
                         onClick={this.onShowArchived}
                     /> */ }
-                    { feedbackButton }
+                    { /* { feedbackButton } */ }
                 </IconizedContextMenuOptionList>
-                <IconizedContextMenuOptionList red>
+                { /* <IconizedContextMenuOptionList red>
                     <IconizedContextMenuOption
                         iconClassName="mx_UserMenu_iconSignOut"
                         label={_t("Sign out")}
                         onClick={this.onSignOutClick}
                     />
-                </IconizedContextMenuOptionList>
+                </IconizedContextMenuOptionList> */ }
             </React.Fragment>
         );
         let secondarySection = null;
