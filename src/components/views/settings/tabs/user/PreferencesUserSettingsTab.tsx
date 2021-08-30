@@ -338,7 +338,7 @@ export default class PreferencesUserSettingsTab extends React.Component<IProps, 
                     { this.renderGroup(PreferencesUserSettingsTab.SPACES_SETTINGS) }
                 </div> }
 
-                <div className="mx_SettingsTab_section">
+                { /* <div className="mx_SettingsTab_section">
                     <span className="mx_SettingsTab_subheading">{ _t("Communities") }</span>
                     <p>{ _t("Communities have been archived to make way for Spaces but you can convert your " +
                         "communities into Spaces below. Converting will ensure your conversations get the latest " +
@@ -349,7 +349,7 @@ export default class PreferencesUserSettingsTab extends React.Component<IProps, 
                         <CommunityMigrator onFinished={this.props.closeSettingsFn} />
                     </details>
                     { this.renderGroup(PreferencesUserSettingsTab.COMMUNITIES_SETTINGS) }
-                </div>
+                </div> */ }
 
                 <div className="mx_SettingsTab_section">
                     <span className="mx_SettingsTab_subheading">{ _t("Keyboard shortcuts") }</span>

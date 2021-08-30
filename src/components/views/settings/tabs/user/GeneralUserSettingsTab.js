@@ -425,15 +425,15 @@ export default class GeneralUserSettingsTab extends React.Component {
         const plaf = PlatformPeg.get();
         const supportsMultiLanguageSpellCheck = plaf.supportsMultiLanguageSpellCheck();
 
-        const discoWarning = this.state.requiredPolicyInfo.hasTerms
-            ? <img
-                className='mx_GeneralUserSettingsTab_warningIcon'
-                src={require("../../../../../../res/img/feather-customised/warning-triangle.svg")}
-                width="18"
-                height="18"
-                alt={_t("Warning")}
-            />
-            : null;
+        // const discoWarning = this.state.requiredPolicyInfo.hasTerms
+        //     ? <img
+        //         className='mx_GeneralUserSettingsTab_warningIcon'
+        //         src={require("../../../../../../res/img/feather-customised/warning-triangle.svg")}
+        //         width="18"
+        //         height="18"
+        //         alt={_t("Warning")}
+        //     />
+        //     : null;
 
         // let accountManagementSection;
         // if (SettingsStore.getValue(UIFeature.Deactivate)) {
@@ -443,13 +443,13 @@ export default class GeneralUserSettingsTab extends React.Component {
         //     </>;
         // }
 
-        let discoverySection;
-        if (SettingsStore.getValue(UIFeature.IdentityServer)) {
-            discoverySection = <>
-                <div className="mx_SettingsTab_heading">{ discoWarning } { _t("Discovery") }</div>
-                { this._renderDiscoverySection() }
-            </>;
-        }
+        // let discoverySection;
+        // if (SettingsStore.getValue(UIFeature.IdentityServer)) {
+        //     discoverySection = <>
+        //         <div className="mx_SettingsTab_heading">{ discoWarning } { _t("Discovery") }</div>
+        //         { this._renderDiscoverySection() }
+        //     </>;
+        // }
 
         return (
             <div className="mx_SettingsTab">
@@ -458,8 +458,8 @@ export default class GeneralUserSettingsTab extends React.Component {
                 { /* { this._renderAccountSection() } */ }
                 { this._renderLanguageSection() }
                 { supportsMultiLanguageSpellCheck ? this._renderSpellCheckSection() : null }
-                { discoverySection }
-                { this._renderIntegrationManagerSection() /* Has its own title */ }
+                { /* { discoverySection } */ }
+                { /* { this._renderIntegrationManagerSection() } */ }
                 { /* { accountManagementSection } */ }
             </div>
         );
