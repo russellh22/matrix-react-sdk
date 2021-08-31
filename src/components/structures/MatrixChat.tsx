@@ -2042,21 +2042,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 );
             } else {
                 // we think we are logged in, but are still waiting for the /sync to complete
-                let errorBox;
-                if (this.state.syncError && !isStoreError) {
-                    errorBox = <div className="mx_MatrixChat_syncError">
-                        { messageForSyncError(this.state.syncError) }
-                    </div>;
-                }
-                view = (
-                    <div className="mx_MatrixChat_splash">
-                        { errorBox }
-                        <Spinner />
-                        <a href="#" className="mx_MatrixChat_splashButtons" onClick={this.onLogoutClick}>
-                            { _t('Logout') }
-                        </a>
-                    </div>
-                );
+                view = null;
             }
         } else if (this.state.view === Views.REGISTER && SettingsStore.getValue(UIFeature.Registration)) {
             const email = ThreepidInviteStore.instance.pickBestInvite()?.toEmail;
