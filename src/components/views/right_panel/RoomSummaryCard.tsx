@@ -220,9 +220,9 @@ const onRoomFilesClick = () => {
     });
 };
 
-const onRoomSettingsClick = () => {
-    defaultDispatcher.dispatch({ action: "open_room_settings" });
-};
+// const onRoomSettingsClick = () => {
+//     defaultDispatcher.dispatch({ action: "open_room_settings" });
+// };
 
 const RoomSummaryCard: React.FC<IProps> = ({ room, onClose }) => {
     const cli = useContext(MatrixClientContext);
@@ -276,9 +276,9 @@ const RoomSummaryCard: React.FC<IProps> = ({ room, onClose }) => {
             { /* <Button className="mx_RoomSummaryCard_icon_share" onClick={onShareRoomClick}>
                 { _t("Share room") }
             </Button> */ }
-            <Button className="mx_RoomSummaryCard_icon_settings" onClick={onRoomSettingsClick}>
+            { /* <Button className="mx_RoomSummaryCard_icon_settings" onClick={onRoomSettingsClick}>
                 { _t("Room settings") }
-            </Button>
+            </Button> */ }
         </Group>
 
         { /* { SettingsStore.getValue(UIFeature.Widgets) && <AppsSection room={room} /> } */ }
