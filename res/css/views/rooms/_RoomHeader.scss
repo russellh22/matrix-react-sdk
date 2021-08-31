@@ -136,6 +136,7 @@ limitations under the License.
 .mx_RoomHeader_avatarPicker_edit,
 .mx_RoomHeader_avatarPicker_remove {
     cursor: pointer;
+    pointer-events: none;
 }
 
 .mx_RoomHeader_avatarPicker_remove {
