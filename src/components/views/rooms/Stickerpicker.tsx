@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import React from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import { Room } from 'matrix-js-sdk/src/models/room';
 import { _t, _td } from '../../../languageHandler';
 import AppTile from '../elements/AppTile';
@@ -27,7 +27,7 @@ import { IntegrationManagers } from "../../../integrations/IntegrationManagers";
 import SettingsStore from "../../../settings/SettingsStore";
 import { ChevronFace, ContextMenu } from "../../structures/ContextMenu";
 import { WidgetType } from "../../../widgets/WidgetType";
-import AccessibleTooltipButton from "../elements/AccessibleTooltipButton";
+// import AccessibleTooltipButton from "../elements/AccessibleTooltipButton";
 import { Action } from "../../../dispatcher/actions";
 import { WidgetMessagingStore } from "../../../stores/widgets/WidgetMessagingStore";
 import { replaceableComponent } from "../../../utils/replaceableComponent";
@@ -396,23 +396,23 @@ export default class Stickerpicker extends React.PureComponent<IProps, IState> {
 
     public render(): JSX.Element {
         let stickerPicker;
-        let stickersButton;
-        const className = classNames(
-            "mx_MessageComposer_button",
-            "mx_MessageComposer_stickers",
-            "mx_Stickers_hideStickers",
-            "mx_MessageComposer_button_highlight",
-        );
+        // let stickersButton;
+        // const className = classNames(
+        //     "mx_MessageComposer_button",
+        //     "mx_MessageComposer_stickers",
+        //     "mx_Stickers_hideStickers",
+        //     "mx_MessageComposer_button_highlight",
+        // );
         if (this.state.showStickers) {
             // Show hide-stickers button
-            stickersButton =
-                <AccessibleButton
-                    id='stickersButton'
-                    key="controls_hide_stickers"
-                    className={className}
-                    onClick={this.onHideStickersClick}
-                    title={_t("Hide Stickers")}
-                />;
+            // stickersButton =
+            //     <AccessibleButton
+            //         id='stickersButton'
+            //         key="controls_hide_stickers"
+            //         className={className}
+            //         onClick={this.onHideStickersClick}
+            //         title={_t("Hide Stickers")}
+            //     />;
 
             stickerPicker = <ContextMenu
                 chevronOffset={this.state.stickerpickerChevronOffset}
@@ -431,17 +431,17 @@ export default class Stickerpicker extends React.PureComponent<IProps, IState> {
             </ContextMenu>;
         } else {
             // Show show-stickers button
-            stickersButton =
-                <AccessibleTooltipButton
-                    id='stickersButton'
-                    key="controls_show_stickers"
-                    className="mx_MessageComposer_button mx_MessageComposer_stickers"
-                    onClick={this.onShowStickersClick}
-                    title={_t("Show Stickers")}
-                />;
+            // stickersButton =
+            //     <AccessibleTooltipButton
+            //         id='stickersButton'
+            //         key="controls_show_stickers"
+            //         className="mx_MessageComposer_button mx_MessageComposer_stickers"
+            //         onClick={this.onShowStickersClick}
+            //         title={_t("Show Stickers")}
+            //     />;
         }
         return <React.Fragment>
-            { stickersButton }
+            { /* { stickersButton } */ }
             { stickerPicker }
         </React.Fragment>;
     }
