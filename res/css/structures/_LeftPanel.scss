@@ -37,7 +37,7 @@ $roomListCollapsedWidth: 68px;
         overflow: hidden;
         position: relative;
 
-        &[data-collapsed] {
+        @media only screen and (max-width: 480px) {
             max-width: $roomListCollapsedWidth;
         }
     }
