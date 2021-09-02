@@ -23,6 +23,9 @@ limitations under the License.
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 24px minmax(0, 1fr) min-content;
+    @media only screen and (max-width: 480px) {
+        max-width: 100%;
+    }
 
     &::before, &::after {
         position: relative;
