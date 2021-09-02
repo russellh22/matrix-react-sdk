@@ -36,11 +36,18 @@ limitations under the License.
         width: 170px;
         max-width: 170px;
         position: fixed;
+        @media only screen and (max-width: 480px) {
+            width: 32px;
+            max-width: 32px;
+        }
     }
 
     .mx_TabbedView_tabPanel {
         margin-left: 240px; // 170px sidebar + 70px padding
         flex-direction: column;
+        @media only screen and (max-width: 480px) {
+            margin-left: 50px;
+        }
     }
 
     .mx_TabbedView_tabLabel_active {
@@ -142,6 +149,9 @@ limitations under the License.
 
 .mx_TabbedView_tabLabel_text {
     vertical-align: middle;
+    @media only screen and (max-width: 480px) {
+        display: none;
+    }
 }
 
 .mx_TabbedView_tabPanel {

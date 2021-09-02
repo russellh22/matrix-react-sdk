@@ -17,6 +17,9 @@ limitations under the License.
 .mx_AppearanceUserSettingsTab_fontSlider,
 .mx_AppearanceUserSettingsTab_fontSlider_preview {
     @mixin mx_Settings_fullWidthField;
+    @media only screen and (max-width: 480px) {
+        margin-right: 12px;
+    }
 }
 
 .mx_AppearanceUserSettingsTab .mx_Field {

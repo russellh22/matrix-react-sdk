@@ -33,6 +33,10 @@ limitations under the License.
         // Put some padding on the bottom to avoid the settings tab from
         // colliding harshly with the dialog when scrolled down.
         padding-bottom: 100px;
+        @media only screen and (max-width: 480px) {
+            min-width: auto;
+            padding-right: initial;
+        }
     }
 
     .mx_Dialog_title {
