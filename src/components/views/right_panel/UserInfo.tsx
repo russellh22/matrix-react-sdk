@@ -1522,7 +1522,7 @@ const UserInfoHeader: React.FC<{
                         </span>
                     </h2>
                 </div>
-                <div>{ member.userId }</div>
+                { /* <div>{ member.userId }</div> */ }
                 <div className="mx_UserInfo_profileStatus">
                     { presenceLabel }
                     { statusLabel }
