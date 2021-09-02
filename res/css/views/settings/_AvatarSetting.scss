@@ -20,6 +20,12 @@ limitations under the License.
     height: 90px;
     margin-top: 8px;
     position: relative;
+    @media only screen and (max-width: 480px) {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        margin-top: 15px;
+    }
 
     .mx_AvatarSetting_hover {
         transition: opacity $hover-transition;
@@ -88,6 +94,10 @@ limitations under the License.
         width: inherit;
         border-radius: 90px;
         cursor: pointer;
+        @media only screen and (max-width: 480px) {
+            height: 70px;
+            border-radius: 70px;
+        }
     }
 
     .mx_AvatarSetting_avatarPlaceholder::before {
