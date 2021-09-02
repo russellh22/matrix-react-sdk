@@ -17,6 +17,9 @@ limitations under the License.
 .mx_DesktopBuildsNotice {
     text-align: center;
     padding: 0 16px;
+    @media only screen and (max-width: 480px) {
+        display: none;
+    }
 
     > * {
         vertical-align: middle;
